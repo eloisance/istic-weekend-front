@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/AuthenticationService';
 import { UserService} from '../_services/UserService';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,30 @@ import { UserService} from '../_services/UserService';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private userService: UserService) {
   }
 
+  loginForm: FormGroup;
+
+  /**
+   *
+   */
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl()
+    });
+    this.loginForm.setValue({email: 'admin@gmail.com', password: 'admin'});
   }
 
+  /**
+   *
+   */
   onLoginClick() {
-    const username = 'admin@gmail.com';
-    const password = 'admin';
+    const username = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
 
     this.authenticationService.getToken(username, password).subscribe(data => {
       console.log('data', data);
@@ -28,6 +44,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   */
   getUser() {
     this.userService.getUser().subscribe(data => {
       console.log('data', data);

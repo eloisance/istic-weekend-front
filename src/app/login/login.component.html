@@ -1,6 +1,8 @@
 <h2>Login</h2>
 
-<input type="email" name="email" />
-<input type="password" name="password" />
+<form [formGroup]="loginForm">
+  <input type="email" title="email" name="email" formControlName="email" required />
+  <input type="password" title="email" name="password" formControlName="password" required />
+</form>
 
 <button (click)="onLoginClick()">Se connecter</button>
