@@ -1,4 +1,7 @@
 <md-toolbar color="primary">
-  <a routerLink="/home">Weekend Helper</a>
-  <i class="material-icons md-light">account_circle</i>
+  <a routerLink="/home">Weekend Project</a>
+  <span class="example-spacer"></span>
+  <a routerLink="/login" *ngIf="!auth.isAuthenticated()"><i class="material-icons md-light">perm_identity</i></a>
+  <a routerLink="/dashboard" *ngIf="auth.isAuthenticated()"><i class="material-icons md-light">perm_identity</i></a>
+  <a (click)="onClickLogout()" *ngIf="auth.isAuthenticated()"><i class="material-icons md-light">power_settings_new</i></a>
 </md-toolbar>

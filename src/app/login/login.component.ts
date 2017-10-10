@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/AuthenticationService';
 import { UserService} from '../_services/UserService';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService) {
+    private userService: UserService,
+    private router: Router) {
   }
 
   loginForm: FormGroup;
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
   getUser() {
     this.userService.getUser().subscribe(data => {
       console.log('data', data);
+      this.router.navigateByUrl('/dashboard');
     }, error => {
       console.log('error', error);
     });

@@ -1,0 +1,12 @@
+<h2>Registration</h2>
+
+<form [formGroup]="registerForm">
+  <input type="text" title="firstname" name="firstname" formControlName="firstname" required />
+  <input type="text" title="lastname" name="lastname" formControlName="lastname" required />
+  <input type="email" title="email" name="email" formControlName="email" required />
+  <input type="password" title="email" name="password" formControlName="password" required />
+</form>
+
+<a routerLink="/login">Already have an account ?</a>
+
+<button (click)="onRegisterClick()" md-raised-button color="accent">S'inscrire</button>

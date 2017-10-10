@@ -1,10 +1,27 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { User } from '../_models/User';
 
 @Injectable()
 export class UserService {
+
+  public user: User;
+
   constructor(private http: Http) {
+    this.user = new User();
+  }
+
+  /**
+   *
+   */
+  registerUser(fn: String, ln: String, email: String, password: String) {
+    return this.http.post(
+      'http://localhost:8080/api/user',
+      { 'firstname': fn, 'lastname': ln, 'email': email, 'password': password }
+    ).map((response: Response) => {
+      return response.json();
+    });
   }
 
   /**
@@ -17,11 +34,11 @@ export class UserService {
     });
     const options = new RequestOptions({headers: headers});
     return this.http.get(
-      'http://localhost:8080/api/users',
+      'http://localhost:8080/api/user',
       options
     ).map((response: Response) => {
       const data = response.json();
-      localStorage.setItem('user', data);
+      this.user.email = data.email;
       return data;
     });
   }
