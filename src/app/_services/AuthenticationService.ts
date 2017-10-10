@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -31,7 +32,7 @@ export class AuthenticationService {
     const options = new RequestOptions({headers: headers});
     const credentials = 'grant_type=password&username=' + username + '&password=' + password;
     return this.http.post(
-      'http://localhost:8080/oauth/token',
+      environment.apiUrl + '/oauth/token',
       credentials,
       options
       )

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { User } from '../_models/User';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -17,7 +18,7 @@ export class UserService {
    */
   registerUser(fn: String, ln: String, email: String, password: String) {
     return this.http.post(
-      'http://localhost:8080/api/user',
+      environment.apiUrl + '/api/user',
       { 'firstname': fn, 'lastname': ln, 'email': email, 'password': password }
     ).map((response: Response) => {
       return response.json();
@@ -34,7 +35,7 @@ export class UserService {
     });
     const options = new RequestOptions({headers: headers});
     return this.http.get(
-      'http://localhost:8080/api/user',
+      environment.apiUrl + '/api/user',
       options
     ).map((response: Response) => {
       const data = response.json();
