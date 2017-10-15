@@ -1,12 +1,37 @@
-<h2>Registration</h2>
+<div class="container">
 
-<form [formGroup]="registerForm">
-  <input type="text" title="firstname" name="firstname" formControlName="firstname" required />
-  <input type="text" title="lastname" name="lastname" formControlName="lastname" required />
-  <input type="email" title="email" name="email" formControlName="email" required />
-  <input type="password" title="email" name="password" formControlName="password" required />
-</form>
+  <br />
+  <h2>Create account</h2><br />
 
-<a routerLink="/login">Already have an account ?</a>
+  <form [formGroup]="registerForm">
+    <div class="form-group">
+      <label for="inputFirstname">Firstname</label>
+      <input type="text" title="firstname" class="form-control" name="firstname" id="inputFirstname" formControlName="firstname" required />
+    </div>
 
-<button (click)="onRegisterClick()" md-raised-button color="accent">S'inscrire</button>
+    <div class="form-group">
+      <label for="inputLastname">Lastname</label>
+      <input type="text" title="lastname" class="form-control" name="lastname" id="inputLastname" formControlName="lastname" required />
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <input type="email" title="email" class="form-control" name="email" id="inputEmail" formControlName="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" title="email" class="form-control" name="password" id="inputPassword" formControlName="password" required />
+    </div>
+
+    <button type="button" (click)="onRegisterClick()" class="btn btn-primary">Sign up</button>
+    <button type="button" routerLink="/login" class="btn btn-default">Already have an account ?</button>
+  </form>
+
+</div>
+
+
+
+
+
+

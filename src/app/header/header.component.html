@@ -1,7 +1,15 @@
-<md-toolbar color="primary">
-  <a routerLink="/home">Weekend Project</a>
-  <span class="example-spacer"></span>
-  <a routerLink="/login" *ngIf="!auth.isAuthenticated()"><i class="material-icons md-light">perm_identity</i></a>
-  <a routerLink="/dashboard" *ngIf="auth.isAuthenticated()"><i class="material-icons md-light">perm_identity</i></a>
-  <a (click)="onClickLogout()" *ngIf="auth.isAuthenticated()"><i class="material-icons md-light">power_settings_new</i></a>
-</md-toolbar>
+<nav class="navbar navbar-dark bg-dark navbar-toggleable-md">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home">Weekend Project</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" *ngIf="auth.isAuthenticated()">Dashboard</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+
+</nav>
