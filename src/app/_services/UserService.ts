@@ -1,32 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { User } from '../_models/User';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
-  public user: User;
-
-  constructor(private http: Http) {
-    this.user = new User();
-  }
+  constructor(private http: Http) { }
 
   /**
-   *
+   * POST User from API
    */
   registerUser(fn: String, ln: String, email: String, password: String) {
     return this.http.post(
       environment.apiUrl + '/api/user',
       { 'firstname': fn, 'lastname': ln, 'email': email, 'password': password }
     ).map((response: Response) => {
-      return response.json();
+      return response;
     });
   }
 
   /**
-   *
+   * GET User from API
    */
   getUser() {
     const access_token = localStorage.getItem('access_token');
@@ -39,7 +34,7 @@ export class UserService {
       options
     ).map((response: Response) => {
       const data = response.json();
-      this.user.email = data.email;
+      localStorage.setItem('user', JSON.stringify(data));
       return data;
     });
   }

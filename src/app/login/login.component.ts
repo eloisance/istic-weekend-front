@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  /**
-   *
-   */
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl(),
@@ -32,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *
+   * Call getToken from AuthenticationService
    */
   onLoginClick() {
     const username = this.loginForm.get('email').value;
@@ -47,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *
+   * Call getUser from UserService
    */
   getUser() {
     this.userService.getUser().subscribe(data => {

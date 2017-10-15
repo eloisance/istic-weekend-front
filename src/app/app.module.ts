@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AuthGuardService } from './_services/AuthGuardService';
 import { AuthenticationService } from './_services/AuthenticationService';
+import { UserService } from './_services/UserService';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -45,7 +46,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthenticationService],
+  providers: [AuthGuardService, AuthenticationService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
