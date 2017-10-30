@@ -19,8 +19,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm: FormGroup;
+  loginError: String = null;
 
   ngOnInit() {
+    this.checkIsAlreadyAuthenticated();
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -35,11 +37,17 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
+    if (!username || !password) {
+      this.loginError = 'Please fill the form.';
+      return;
+    }
+
     this.authenticationService.getToken(username, password).subscribe(data => {
       console.log('data', data);
       this.getUser();
     }, error => {
       console.log('error', error);
+      this.loginError = 'Sorry! Something goes wrong. We can\'t find this account.';
     });
   }
 
@@ -52,7 +60,14 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/dashboard');
     }, error => {
       console.log('error', error);
+      this.loginError = 'Sorry! Something goes wrong. We can\'t find this account.';
     });
+  }
+
+  private checkIsAlreadyAuthenticated() {
+    if (this.authenticationService.isAuthenticated()) {
+      this.router.navigateByUrl('/dashboard');
+    }
   }
 
 }

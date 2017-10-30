@@ -3,6 +3,10 @@
   <br />
   <h2>Create account</h2><br />
 
+  <div *ngIf="registerError != null" class="alert alert-danger" role="alert">
+    {{ registerError }}
+  </div>
+
   <form [formGroup]="registerForm">
     <div class="form-group">
       <label for="inputFirstname">Firstname</label>

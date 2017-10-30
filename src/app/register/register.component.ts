@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../_services/UserService';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerForm: FormGroup;
+  registerError: String = null;
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -39,11 +40,17 @@ export class RegisterComponent implements OnInit {
     const email = this.registerForm.get('email').value;
     const password = this.registerForm.get('password').value;
 
+    if (!fn || !ln || !email || !password) {
+      this.registerError = 'Please fill the form.';
+      return;
+    }
+
     this.userService.registerUser(fn, ln, email, password).subscribe(data => {
       console.log('data', data);
       this.router.navigateByUrl('/login');
     }, error => {
       console.log('error', error);
+      this.registerError = 'Sorry! Something goes wrong, we can\'t create your account.';
     });
   }
 

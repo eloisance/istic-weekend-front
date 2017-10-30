@@ -3,6 +3,10 @@
   <br />
   <h2>Login</h2><br />
 
+  <div *ngIf="loginError != null" class="alert alert-danger" role="alert">
+    {{ loginError }}
+  </div>
+
   <form [formGroup]="loginForm">
     <div class="form-group">
       <label for="inputEmail">Email</label>
