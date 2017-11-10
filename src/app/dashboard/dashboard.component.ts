@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/AuthenticationService';
 import { SportService } from '../_services/SportService';
+import { ActivityService } from '../_services/ActivityService';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [SportService]
+  providers: [SportService, ActivityService]
 })
 export class DashboardComponent implements OnInit {
 
@@ -15,7 +16,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public auth: AuthenticationService,
-    private sportService: SportService) {
+    private sportService: SportService,
+    private activityService: ActivityService) {
   }
 
   ngOnInit() {
@@ -29,10 +31,20 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
+   * Add user activity
+   */
+  onAddActivityClick() {
+    this.activityService.addActivity(1).subscribe(data => {
+      console.log('onAddActivityClick: ' + data);
+    }, error => {
+      console.log('onAddActivityClick failed ' + error);
+    });
+  }
+
+  /**
    * Logout user
    */
   onClickLogout() {
     this.auth.logout();
   }
-
 }

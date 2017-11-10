@@ -1,4 +1,9 @@
 .card {
+}
+
+.card .levels button {
+  width: 100%;
+  margin-bottom: 3px;
   cursor: pointer;
 }
 
