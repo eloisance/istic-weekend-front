@@ -1,7 +1,7 @@
 <div class="container">
 
   <br />
-  <div class="card">
+  <div class="card user">
     <div class="card-body">
       <h4>Welcome {{ user.firstname }} {{ user.lastname }}</h4>
       <small>{{ user.email }}</small>
@@ -15,7 +15,7 @@
 
   <!-- List user activities -->
 
-  <br /><br />
+  <br /><br /><br />
   <h3>My activities</h3><br />
   <div class="card-columns" *ngIf="user.activities.length > 0">
     <div class="card" *ngFor="let activity of user.activities">
