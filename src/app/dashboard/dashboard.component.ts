@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
 
   public user: any;
   public sports: any;
+  public lat: number;
+  public lng: number;
 
   constructor(
     public auth: AuthenticationService,
@@ -23,6 +25,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lat = 48.1144859;
+    this.lng = -1.6287058;
     this.user = JSON.parse(localStorage.getItem('user'));
     this.sportService.getAll().subscribe(data => {
       this.sports = data;

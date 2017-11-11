@@ -9,6 +9,9 @@
     </div>
   </div>
 
+  <agm-map [latitude]="lat" [longitude]="lng" [zoomControl]=false [mapDraggable]=false [disableDoubleClickZoom]=true [streetViewControl]=false>
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
 
   <!-- List user activities -->
 
