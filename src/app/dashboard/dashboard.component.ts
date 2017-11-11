@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/AuthenticationService';
 import { SportService } from '../_services/SportService';
 import { ActivityService } from '../_services/ActivityService';
+import { UserService } from '../_services/UserService';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [SportService, ActivityService]
+  providers: [SportService, ActivityService, UserService]
 })
 export class DashboardComponent implements OnInit {
 
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public auth: AuthenticationService,
     private sportService: SportService,
-    private activityService: ActivityService) {
+    private activityService: ActivityService,
+    private userService: UserService) {
   }
 
   ngOnInit() {
@@ -33,9 +35,12 @@ export class DashboardComponent implements OnInit {
   /**
    * Add user activity
    */
-  onAddActivityClick() {
-    this.activityService.addActivity(1).subscribe(data => {
+  onAddActivityClick(levelId: Number) {
+    this.activityService.addActivity(levelId).subscribe(data => {
       console.log('onAddActivityClick: ' + data);
+      this.userService.getUser().subscribe(d => {
+        this.user = JSON.parse(localStorage.getItem('user'));
+      }, error => {});
     }, error => {
       console.log('onAddActivityClick failed ' + error);
     });

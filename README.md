@@ -4,3 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## How to use it ?
 Please follow README of backend [https://github.com/eloisance/istic-weekend-back]
+
+## Credits
+Images from [https://www.pexels.com/]

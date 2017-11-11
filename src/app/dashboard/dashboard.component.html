@@ -16,7 +16,7 @@
   <h3>My activities</h3><br />
   <div class="card-columns" *ngIf="user.activities.length > 0">
     <div class="card" *ngFor="let activity of user.activities">
-      <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/{{activity.level.sport.image}}" alt="Card image cap">
       <div class="card-body">
         <p class="card-text">{{ activity.level.sport.name }} <span class="badge badge-dark float-right">{{ activity.level.name }}</span></p>
       </div>
@@ -33,11 +33,11 @@
 
   <div class="card-columns">
     <div class="card" *ngFor="let sport of sports">
-      <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/{{sport.image}}" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">{{ sport.name }}</h4>
         <p class="card-text">Select your level for this activity if you want to start it now.</p>
-        <div class="levels" *ngFor="let level of sport.levels" (click)="onAddActivityClick()">
+        <div class="levels" *ngFor="let level of sport.levels" (click)="onAddActivityClick(level.id)">
           <button type="button" class="btn btn-dark">{{ level.name }}</button>
         </div>
       </div>
