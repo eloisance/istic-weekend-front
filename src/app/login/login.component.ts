@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       email: new FormControl(),
       password: new FormControl()
     });
-    this.loginForm.setValue({email: 'admin@gmail.com', password: 'admin'});
+    this.loginForm.setValue({email: 'emmanuel.loisance@gmail.com', password: '1234'});
   }
 
   /**

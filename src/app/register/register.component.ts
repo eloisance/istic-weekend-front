@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm.setValue({
       firstname: 'Emmanuel',
       lastname: 'Loisance',
-      email: 'admin@gmail.com',
-      password: 'admin'
+      email: 'emmanuel.loisance@gmail.com',
+      password: '1234'
     });
   }
 
