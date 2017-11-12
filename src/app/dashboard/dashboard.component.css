@@ -1,6 +1,18 @@
 .card {
 }
 
+.card-columns {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+
+.card-columns.user-activities {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+
 .card.user {
   border-radius: .25em .25em 0 0;
 }

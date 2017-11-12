@@ -11,10 +11,10 @@ export class UserService {
   /**
    * POST User from API
    */
-  registerUser(fn: String, ln: String, email: String, password: String) {
+  registerUser(fn: String, ln: String, email: String, password: String, lat: Number, lng: Number) {
     return this.http.post(
       environment.apiUrl + '/api/user',
-      { 'firstname': fn, 'lastname': ln, 'email': email, 'password': password }
+      { 'firstname': fn, 'lastname': ln, 'email': email, 'password': password, 'lat': lat, 'lng': lng }
     ).map((response: Response) => {
       return response;
     });

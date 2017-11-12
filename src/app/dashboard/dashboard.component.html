@@ -17,9 +17,9 @@
 
   <br /><br /><br />
   <h3>My activities</h3><br />
-  <div class="card-columns" *ngIf="user.activities.length > 0">
-    <div class="card" *ngFor="let activity of user.activities">
-      <img class="card-img-top" src="assets/images/{{activity.level.sport.image}}" alt="Card image cap">
+  <div class="card-columns user-activities" *ngIf="user.activities.length > 0">
+      <div class="card" *ngFor="let activity of user.activities">
+      <div class="img-wrapper"><img class="card-img-top" src="assets/images/{{activity.level.sport.image}}" alt="Card image cap"></div>
       <div class="card-body">
         <p class="card-text">{{ activity.level.sport.name }} <span class="badge badge-dark float-right">{{ activity.level.name }}</span></p>
       </div>

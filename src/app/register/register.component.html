@@ -28,6 +28,15 @@
       <input type="password" title="email" class="form-control" name="password" id="inputPassword" formControlName="password" required />
     </div>
 
+
+    <div class="form-group">
+      <label for="inputPassword">Please pin your address (right click to select)</label>
+      <agm-map [latitude]="centerMapLat" [longitude]="centerMapLng" [zoom]="centerMapZoom" (mapRightClick)="onMapRightClick($event)">
+        <agm-marker [latitude]="userLat" [longitude]="userLng"></agm-marker>
+      </agm-map>
+    </div>
+
+
     <button type="button" (click)="onRegisterClick()" class="btn btn-primary">Sign up</button>
     <button type="button" routerLink="/login" class="btn btn-default">Already have an account ?</button>
   </form>
