@@ -51,6 +51,19 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
+   * Check if user is already in this activity level
+   * @param {number} levelId
+   * @returns {boolean}
+   */
+  userHasActivityLevel(levelId: number) {
+    for (const activity of this.user.activities) {
+      if (activity.level.id === levelId) {
+        return true;
+      }
+    }
+  }
+
+  /**
    * Logout user
    */
   onClickLogout() {

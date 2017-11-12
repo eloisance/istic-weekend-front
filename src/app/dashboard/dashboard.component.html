@@ -41,7 +41,7 @@
         <h4 class="card-title">{{ sport.name }}</h4>
         <p class="card-text">Select your level for this activity if you want to start it now.</p>
         <div class="levels" *ngFor="let level of sport.levels" (click)="onAddActivityClick(level.id)">
-          <button type="button" class="btn btn-dark">{{ level.name }}</button>
+          <button type="button" [disabled]="userHasActivityLevel(level.id)" class="btn btn-dark">{{ level.name }}</button>
         </div>
       </div>
     </div>
